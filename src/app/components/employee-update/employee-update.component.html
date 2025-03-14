@@ -1,0 +1,100 @@
+<div class="container mt-5">
+    <h2>Update Employee</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      
+      <!-- File Upload Section -->
+      <div class="row mb-3">
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+          <img [src]="previewUrl" class="rounded-circle img-fluid" alt="Profile Preview"
+               style="max-width: 150px; max-height: 150px; object-fit: cover;">
+               
+        </div>
+        <div class="col-md-6">
+          <label for="file" class="form-label">Upload Profile Picture</label>
+          <input type="file" id="file" class="form-control" (change)="onFileSelected($event)">
+        </div>
+      </div>
+      
+      <!-- Basic Employee Data -->
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="yearOfBirth" class="form-label">Year Of Birth</label>
+        <input type="number" id="yearOfBirth" formControlName="yearOfBirth" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="employmentStartDate" class="form-label">Employment Start Date</label>
+        <input type="date" id="employmentStartDate" formControlName="employmentStartDate" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select id="gender" formControlName="gender" class="form-select">
+          <option value="">Select Gender</option>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+          <option value="OTHER">Other</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="annualVacationDaysOff" class="form-label">Annual Vacation Days Off</label>
+        <input type="number" id="annualVacationDaysOff" formControlName="annualVacationDaysOff" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="daysOff" class="form-label">Days Off</label>
+        <input type="number" id="daysOff" formControlName="daysOff" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="daysOfPaidLeave" class="form-label">Days Of Paid Leave</label>
+        <input type="number" id="daysOfPaidLeave" formControlName="daysOfPaidLeave" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <select id="department" formControlName="departmentId" class="form-select">
+          <option value="">Select Department</option>
+          <option *ngFor="let dept of departments" [value]="dept.id">
+            {{ dept.departmentName }}
+          </option>
+        </select>
+      </div>
+      
+      <!-- Employment Contracts Section -->
+      <div class="mb-3">
+        <h3>Employment Contracts</h3>
+        <div formArrayName="employmentContracts">
+          <div *ngFor="let contract of contracts.controls; let i = index" [formGroupName]="i" class="card mb-2 p-2">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="contractType{{i}}" class="form-label">Contract Type</label>
+                <select id="contractType{{i}}" formControlName="contractType" class="form-select">
+                  <option value="">Select Contract Type</option>
+                  <option value="PERMANENT">Permanent</option>
+                  <option value="FIXED_TERM">Fixed Term</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="contractDurationInMonths{{i}}" class="form-label">Duration (Months)</label>
+                <input type="number" id="contractDurationInMonths{{i}}" formControlName="contractDurationInMonths" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label for="contractStart{{i}}" class="form-label">Contract Start Date</label>
+                <input type="date" id="contractStart{{i}}" formControlName="contractStart" class="form-control">
+              </div>
+            </div>
+            <div class="mt-2 text-end">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeContract(i)">Remove Contract</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="addContract()">Add Contract</button>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Update Employee</button>
+    </form>
+  </div>
+  

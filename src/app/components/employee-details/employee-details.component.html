@@ -1,0 +1,64 @@
+<div class="container mt-5" *ngIf="employee">
+
+  <div class="d-flex justify-content-between  mb-3">
+    <h2>Employee Details</h2>
+    <a [routerLink]="['/employee/update', employee.id]" class="btn btn-warning ms-3">Update</a>
+  </div>
+  <div class="row align-items-center">
+    <!-- Circular Profile Image -->
+    <div class="col-md-3 text-center">
+      <img *ngIf="employee.imagePath" 
+           [src]="imageBaseUrl + employee.imagePath" 
+           alt="Profile Picture" 
+           class="rounded-circle img-fluid" 
+           style="width: 150px; height: 150px; object-fit: cover;">
+
+           <img *ngIf="!employee.imagePath" 
+           [src]="noPictureUrl" 
+           alt="Profile Picture" 
+           class="rounded-circle img-fluid" 
+           style="width: 150px; height: 150px; object-fit: cover;">
+    </div>
+    <!-- Employee Information -->
+    <div class="col-md-9">
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Name:</strong> {{ employee.firstName }} {{ employee.lastName }}</li>
+        <li class="list-group-item"><strong>Year of Birth:</strong> {{ employee.yearOfBirth }}</li>
+        <li class="list-group-item"><strong>Employment Start Date:</strong> {{ employee.employmentStartDate | date }}</li>
+        <li class="list-group-item"><strong>Gender:</strong> {{ employee.gender }}</li>
+        <li class="list-group-item"><strong>Annual Vacation Days Off:</strong> {{ employee.annualVacationDaysOff }}</li>
+        <li class="list-group-item"><strong>Days Off:</strong> {{ employee.daysOff }}</li>
+        <li class="list-group-item"><strong>Days Of Paid Leave:</strong> {{ employee.daysOfPaidLeave }}</li>
+        <li class="list-group-item">
+          <strong>Department:</strong> 
+          <span *ngIf="employee.department; else noDept">{{ employee.department.departmentName }}</span>
+          <ng-template #noDept>No department</ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Employment Contracts Section -->
+  <div class="mt-4" *ngIf="employee.employmentContracts && employee.employmentContracts.length > 0; else noContract">
+    <h3>Employment Contracts</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Contract Type</th>
+          <th>Duration (Months)</th>
+          <th>Contract Start</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contract of employee.employmentContracts">
+          <td>{{ contract.contractType }}</td>
+          <td>{{ contract.contractDurationInMonths }}</td>
+          <td>{{ contract.contractStart | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noContract>
+    <p>No employment contracts available.</p>
+  </ng-template>
+</div>
