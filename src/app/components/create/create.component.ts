@@ -21,6 +21,7 @@ export class CreateComponent implements OnInit {
   departments: Department[] = [];
 
 
+
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private router: Router, private departmentService: DepartmentService) {
     this.employeeForm = this.fb.group({
       firstName: ['John', Validators.required],

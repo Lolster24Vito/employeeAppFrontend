@@ -20,7 +20,8 @@ export class EmployeeUpdateComponent implements OnInit{
   selectedFile: File | null = null;
   previewUrl: string = NO_PICTURE_IMAGE_URL;
   departments: Department[] = [];
-  
+  submitted = false;
+
 
   constructor(
     private fb: FormBuilder,
@@ -97,6 +98,7 @@ export class EmployeeUpdateComponent implements OnInit{
   }
 
   onSubmit(): void {
+    this.submitted=true;
     if (this.employeeForm.invalid){ 
       console.log('invalid');
       return;
