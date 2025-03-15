@@ -20,105 +20,108 @@
     </div>
     
 
-    <div class="mb-3 col-md-4">
-      <label for="firstName" class="form-label">First Name</label>
-      <input type="text" id="firstName" formControlName="firstName" class="form-control"
-        [ngClass]="{'is-invalid': submitted && employeeForm.get('firstName')?.errors}">
-      <div *ngIf="submitted && employeeForm.get('firstName')?.errors" class="invalid-feedback">
-        First Name is required.
+    <!-- Main Form Row Split into Two Columns -->
+    <div class="row">
+      <!-- Left Column: Basic Employee Information -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && employeeForm.get('firstName')?.errors}">
+          <div *ngIf="submitted && employeeForm.get('firstName')?.errors" class="invalid-feedback">
+            First Name is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" id="lastName" formControlName="lastName" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && employeeForm.get('lastName')?.errors}">
+          <div *ngIf="submitted && employeeForm.get('lastName')?.errors" class="invalid-feedback">
+            Last Name is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="yearOfBirth" class="form-label">Year Of Birth</label>
+          <input type="number" id="yearOfBirth" formControlName="yearOfBirth" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && employeeForm.get('yearOfBirth')?.errors}">
+          <div *ngIf="submitted && employeeForm.get('yearOfBirth')?.errors" class="invalid-feedback">
+            Valid Year Of Birth is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="employmentStartDate" class="form-label">Employment Start Date</label>
+          <input type="date" id="employmentStartDate" formControlName="employmentStartDate" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender</label>
+          <select id="gender" formControlName="gender" class="form-select"
+                  [ngClass]="{'is-invalid': submitted && employeeForm.get('gender')?.errors}">
+            <option value="">Select Gender</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+          </select>
+          <div *ngIf="submitted && employeeForm.get('gender')?.errors" class="invalid-feedback">
+            Gender is required.
+          </div>
+        </div>
+
+        <!-- Department Select Field -->
+        <div class="mb-3">
+          <label for="department" class="form-label">Department</label>
+          <select id="department" formControlName="departmentId" class="form-select">
+            <option value="">Select Department</option>
+            <option *ngFor="let dept of departments" [value]="dept.id">
+              {{ dept.departmentName }}
+            </option>
+          </select>
+          <div *ngIf="submitted && employeeForm.get('departmentId')?.errors" class="invalid-feedback">
+            Department is required.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Additional Fields -->
+      <div class="col-md-6">
+        <!-- Numeric Fields -->
+          <div class="mb-3 col-md-6">
+            <label for="annualVacationDaysOff" class="form-label">Annual Vacation Days Off</label>
+            <input type="number" id="annualVacationDaysOff" formControlName="annualVacationDaysOff" class="form-control">
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="daysOff" class="form-label">Days Off</label>
+            <input type="number" id="daysOff" formControlName="daysOff" class="form-control">
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="daysOfPaidLeave" class="form-label">Days Of Paid Leave</label>
+            <input type="number" id="daysOfPaidLeave" formControlName="daysOfPaidLeave" class="form-control">
+          </div>
+
+        <!-- Employment Contract Section -->
+        <h3>Employment Contract</h3>
+          <div class="mb-3 col-md-4">
+            <label for="contractType" class="form-label">Contract Type</label>
+            <select id="contractType" formControlName="contractType" class="form-select">
+              <option value="">Select Contract Type</option>
+              <option value="PERMANENT">Permanent</option>
+              <option value="FIXED_TERM">Fixed Term</option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-4">
+            <label for="contractDurationInMonths" class="form-label">Duration (Months)</label>
+            <input type="number" id="contractDurationInMonths" formControlName="contractDurationInMonths" class="form-control">
+          </div>
+          <div class="mb-3 col-md-4">
+            <label for="contractStart" class="form-label">Contract Start Date</label>
+            <input type="date" id="contractStart" formControlName="contractStart" class="form-control">
+          </div>
       </div>
     </div>
-
-    <div class="mb-3 col-md-4">
-      <label for="lastName" class="form-label">Last Name</label>
-      <input type="text" id="lastName" formControlName="lastName" class="form-control"
-        [ngClass]="{'is-invalid': submitted && employeeForm.get('lastName')?.errors}">
-      <div *ngIf="submitted && employeeForm.get('lastName')?.errors" class="invalid-feedback">
-        Last Name is required.
-      </div>
-    </div>
-
-    <div class="mb-3 col-md-4">
-      <label for="yearOfBirth" class="form-label">Year Of Birth</label>
-      <input type="number" id="yearOfBirth" formControlName="yearOfBirth" class="form-control"
-        [ngClass]="{'is-invalid': submitted && employeeForm.get('yearOfBirth')?.errors}">
-      <div *ngIf="submitted && employeeForm.get('yearOfBirth')?.errors" class="invalid-feedback">
-        Valid Year Of Birth is required.
-      </div>
-    </div>
-
-    <div class="mb-3 col-md-4">
-      <label for="employmentStartDate" class="form-label">Employment Start Date</label>
-      <input type="date" id="employmentStartDate" formControlName="employmentStartDate" class="form-control">
-    </div>
-
-    <div class="mb-3 col-md-4">
-      <label for="gender" class="form-label">Gender</label>
-      <select id="gender" formControlName="gender" class="form-select"
-        [ngClass]="{'is-invalid': submitted && employeeForm.get('gender')?.errors}">
-        <option value="">Select Gender</option>
-        <option value="MALE">Male</option>
-        <option value="FEMALE">Female</option>
-        <option value="OTHER">Other</option>
-      </select>
-      <div *ngIf="submitted && employeeForm.get('gender')?.errors" class="invalid-feedback">
-        Gender is required.
-      </div>
-    </div>
-
-     <!-- Department Select Field -->
-     <div class="mb-3 col-md-4">
-      <label for="department" class="form-label">Department</label>
-      <select id="department" formControlName="departmentId" class="form-select">
-        <option value="">Select Department</option>
-        <option *ngFor="let dept of departments" [value]="dept.id">
-          {{ dept.departmentName }}
-        </option>
-      </select>
-      <div *ngIf="submitted && employeeForm.get('departmentId')?.errors" class="invalid-feedback">
-        Department is required.
-      </div>
-    </div>
-
-
-
-    <div class="mb-3 col-md-4">
-      <label for="annualVacationDaysOff" class="form-label">Annual Vacation Days Off</label>
-      <input type="number" id="annualVacationDaysOff" formControlName="annualVacationDaysOff" class="form-control">
-    </div>
-
-    <div class="mb-3 col-md-4">
-      <label for="daysOff" class="form-label">Days Off</label>
-      <input type="number" id="daysOff" formControlName="daysOff" class="form-control">
-    </div>
-
-    <div class="mb-3 col-md-4">
-      <label for="daysOfPaidLeave" class="form-label">Days Of Paid Leave</label>
-      <input type="number" id="daysOfPaidLeave" formControlName="daysOfPaidLeave" class="form-control">
-    </div>
-
-
-    <h3>Employment Contract</h3>
-
-<div class="mb-3 col-md-4">
-  <label for="contractType" class="form-label">Contract Type</label>
-  <select id="contractType" formControlName="contractType" class="form-select">
-    <option value="">Select Contract Type</option>
-    <option value="PERMANENT">Permanent</option>
-    <option value="FIXED_TERM">Fixed Term</option>
-  </select>
-</div>
-
-<div class="mb-3 col-md-4">
-  <label for="contractDurationInMonths" class="form-label">Contract Duration (Months)</label>
-  <input type="number" id="contractDurationInMonths" formControlName="contractDurationInMonths" class="form-control">
-</div>
-
-<div class="mb-3 col-md-4">
-  <label for="contractStart" class="form-label">Contract Start Date</label>
-  <input type="date" id="contractStart" formControlName="contractStart" class="form-control">
-</div>
-
+    
     <button type="submit" class="btn btn-primary">Create Employee</button>
   </form>
 
