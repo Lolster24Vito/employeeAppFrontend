@@ -1,6 +1,14 @@
 # EmployeeAppFrontend
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+Here are some images from the project:
+![Home](https://github.com/user-attachments/assets/4ac0e982-cd4a-4e97-a0b7-6d579343de94)
+![UpdateEmployee2](https://github.com/user-attachments/assets/c3b99f87-658f-48b6-9ffc-facb545f35ed)
+![CreateEmployee1](https://github.com/user-attachments/assets/03ee2739-fe48-4fe1-9a3a-7a7be456c01c)
+![EmployeeDetails2](https://github.com/user-attachments/assets/0c9a7c77-470b-49aa-bca8-ce8b7e0cb40a)
+![EmployeeDetails1](https://github.com/user-attachments/assets/06c37c7e-5b3f-49ab-9bc6-746af33767b5)
+![CreateEmployee2](https://github.com/user-attachments/assets/96fcccc8-069b-48fa-9e8f-695293915b45)
+
 
 ## Development server
 
