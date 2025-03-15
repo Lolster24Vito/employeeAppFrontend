@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   noPictureUrl:string=NO_PICTURE_IMAGE_URL;
   // Pagination variables
   currentPage: number = 0;
-  pageSize: number = 3;
+  pageSize: number = 4;
   totalPages: number = 0;
 
   constructor(private employeeService: EmployeeService) { }
