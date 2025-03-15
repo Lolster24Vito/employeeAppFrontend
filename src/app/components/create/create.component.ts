@@ -26,16 +26,16 @@ export class CreateComponent implements OnInit {
       firstName: ['John', Validators.required],
       lastName: ['Doe', Validators.required],
       yearOfBirth: [null, [Validators.required, Validators.min(1900)]],
-      employmentStartDate: [null], // Optional field; could add a validator if needed
+      employmentStartDate: [null], 
       gender: ['', Validators.required],
       annualVacationDaysOff: [14],
       daysOff: [14],
       daysOfPaidLeave: [7],
-      departmentId: [null, Validators.required],
+      departmentId: [null],
        // Employment Contract fields
-       contractType: ['', Validators.required],
-       contractDurationInMonths: [6, Validators.required],
-       contractStart: [null, Validators.required],
+       contractType: [''],
+       contractDurationInMonths: [6],
+       contractStart: [null],
     });
   }
 

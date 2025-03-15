@@ -38,7 +38,7 @@ export class EmployeeUpdateComponent implements OnInit{
       annualVacationDaysOff: [14],
       daysOff: [14],
       daysOfPaidLeave: [7],
-      departmentId: [null, Validators.required],
+      departmentId: [null],
       employmentContracts: this.fb.array([])
     });
   }
